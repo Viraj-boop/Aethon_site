@@ -293,7 +293,7 @@ const Hero = () => {
 
 const About = () => {
   const team = [
-    { name: "Viraj", role: "Founder & Creative Director", img: "src/assets/images/founder.jpeg" },
+    { name: "Viraj", role: "Founder & Creative Director", img: "src/assets/images/viraj.jpeg" },
   ];
 
   const values = [
