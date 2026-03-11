@@ -1,0 +1,5 @@
+{
+  "name": "Aethon Agency",
+  "description": "Award-winning web development agency crafting immersive digital experiences.",
+  "requestFramePermissions": ["microphone"]
+}
