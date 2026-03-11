@@ -14,7 +14,7 @@ export default function Terminal() {
   ]);
   const [input, setInput] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
-  const bottomRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const setTheme = useCursorStore(state => state.setTheme);
 
   useEffect(() => {
@@ -38,7 +38,9 @@ export default function Terminal() {
   }, []);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTop = scrollContainerRef.current.scrollHeight;
+    }
   }, [history, isProcessing]);
 
   const updateLastHistory = (out: string) => {
@@ -148,7 +150,7 @@ Keep responses under 3 sentences. Use a terminal-like, authoritative tone.`
             </div>
             <div className="mx-auto text-gray-500 text-xs">guest@aethon-server:~</div>
           </div>
-          <div className="p-6 h-80 overflow-y-auto text-[#c4a277] flex flex-col gap-3 bg-[#0a0a0a]">
+          <div ref={scrollContainerRef} className="p-6 h-80 overflow-y-auto text-[#c4a277] flex flex-col gap-3 bg-[#0a0a0a] scroll-smooth">
             {history.map((item, i) => (
               <div key={i}>
                 {item.cmd && <div><span className="text-green-500/80">guest@aethon:~$</span> <span className="text-[#e6e2d3]">{item.cmd}</span></div>}
@@ -178,7 +180,6 @@ Keep responses under 3 sentences. Use a terminal-like, authoritative tone.`
                 />
               </div>
             )}
-            <div ref={bottomRef} />
           </div>
         </div>
       </div>

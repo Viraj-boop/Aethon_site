@@ -240,7 +240,7 @@ const Hero = () => {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
           className="mt-6 md:mt-10 flex flex-col items-center gap-8 z-10 relative w-full max-w-2xl"
         >
-          <p className={`text-lg md:text-3xl font-display font-normal ${theme.text} max-w-2xl px-4 leading-relaxed transition-colors duration-1000`}>
+          <p className={`text-lg md:text-3xl font-display font-normal ${theme.text} max-w-2xl px-4 leading-relaxed transition-colors duration-1000 drop-shadow-2xl`} style={{ textShadow: '0 4px 30px rgba(0,0,0,0.8)' }}>
             {theme.headline}
           </p>
           <div className="flex items-center gap-3 text-[10px] md:text-xs font-sans font-bold uppercase tracking-widest mt-2 bg-black/50 backdrop-blur-md px-6 py-3 rounded-full border border-white/10">
@@ -293,9 +293,7 @@ const Hero = () => {
 
 const About = () => {
   const team = [
-    { name: "Elena Rostova", role: "Founder & Creative Director", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop" },
-    { name: "Marcus Chen", role: "Head of Engineering", img: "https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=800&auto=format&fit=crop" },
-    { name: "Sarah Jenkins", role: "Lead Designer", img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=800&auto=format&fit=crop" },
+    { name: "Viraj", role: "Founder & Creative Director", img: "src/assets/images/founder.jpeg" },
   ];
 
   const values = [
@@ -356,9 +354,9 @@ const About = () => {
           <h3 className="text-xs md:text-sm font-sans text-gray-500 uppercase tracking-widest mb-12 flex items-center gap-2">
             <span className="w-8 h-[1px] bg-gray-500" /> Leadership
           </h3>
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+          <StaggerContainer className="flex justify-center">
             {team.map((member, i) => (
-              <StaggerItem key={i} className="group cursor-pointer">
+              <StaggerItem key={i} className="group cursor-pointer w-full max-w-sm">
                 <div className="overflow-hidden rounded-2xl aspect-[3/4] mb-6 bg-gray-100 relative">
                   <img 
                     src={member.img} 
@@ -366,8 +364,8 @@ const About = () => {
                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
                   />
                 </div>
-                <h4 className="text-xl md:text-2xl font-display font-bold uppercase tracking-tight">{member.name}</h4>
-                <p className="text-xs md:text-sm font-sans text-gray-500 uppercase tracking-widest mt-2">{member.role}</p>
+                <h4 className="text-xl md:text-2xl font-display font-bold uppercase tracking-tight text-center">{member.name}</h4>
+                <p className="text-xs md:text-sm font-sans text-gray-500 uppercase tracking-widest mt-2 text-center">{member.role}</p>
               </StaggerItem>
             ))}
           </StaggerContainer>
@@ -506,7 +504,7 @@ const Footer = () => {
   const opacity = useTransform(scrollYProgress, [0, 1], [0.5, 1]);
 
   return (
-    <footer ref={ref} className="relative bg-bg text-text pt-24 pb-16 md:pt-40 md:pb-32 px-4 md:px-12 overflow-hidden z-20 rounded-t-[2rem] md:rounded-t-[4rem] -mt-12 shadow-[0_-20px_50px_rgba(0,0,0,0.3)]">
+    <footer ref={ref} className="relative bg-bg text-text pt-24 pb-32 md:pt-40 md:pb-48 px-4 md:px-12 overflow-hidden z-20 rounded-t-[2rem] md:rounded-t-[4rem] -mt-12 shadow-[0_-20px_50px_rgba(0,0,0,0.3)]">
       <div className="max-w-4xl mx-auto mb-32 md:mb-48">
         <div className="mb-16 md:mb-24">
           <h2 className="text-xs md:text-sm font-sans text-gray-400 uppercase tracking-widest mb-4 flex items-center gap-2">
@@ -602,8 +600,10 @@ useEffect(() => {
 useEffect(() => {
   if (!loading) {
     const timer = setTimeout(() => {
-      window.scrollTo(0, 0);
-    }, 120);
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }, 50);
 
     return () => clearTimeout(timer);
   }

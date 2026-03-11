@@ -1,6 +1,6 @@
 import React, { useRef, Component, ErrorInfo, ReactNode } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Text, OrbitControls } from '@react-three/drei';
+import { Text, OrbitControls, Billboard, Html } from '@react-three/drei';
 import * as THREE from 'three';
 
 class ErrorBoundary extends Component<{children: ReactNode, fallback: ReactNode}, {hasError: boolean}> {
@@ -39,14 +39,16 @@ const TechItem = ({ text, radius, speed, offset, yPos }: { text: string, radius:
 
   return (
     <group ref={ref} position={[0, yPos, 0]}>
-      <Text
-        fontSize={0.5}
-        color="#c4a277"
-        anchorX="center"
-        anchorY="middle"
-      >
-        {text}
-      </Text>
+      <Billboard>
+        <Text
+          fontSize={0.5}
+          color="#c4a277"
+          anchorX="center"
+          anchorY="middle"
+        >
+          {text}
+        </Text>
+      </Billboard>
     </group>
   );
 };
@@ -66,7 +68,7 @@ export default function TechOrbit() {
     <div className="w-full h-[60vh] md:h-[80vh] relative bg-[#171614] rounded-2xl overflow-hidden border border-[#c4a277]/10 shadow-2xl cursor-move">
       <ErrorBoundary fallback={<div className="w-full h-full flex items-center justify-center text-[#c4a277] font-mono text-sm">3D Scene Failed to Load</div>}>
         <Canvas camera={{ position: [0, 2, 8], fov: 50 }}>
-          <React.Suspense fallback={null}>
+          <React.Suspense fallback={<Html center><div className="w-4 h-4 border-2 border-[#c4a277] border-t-transparent rounded-full animate-spin" /></Html>}>
             <ambientLight intensity={0.5} />
             <pointLight position={[10, 10, 10]} intensity={1} color="#c4a277" />
             

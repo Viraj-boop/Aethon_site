@@ -130,6 +130,17 @@ export default function VoiceNav() {
         )}
       </AnimatePresence>
 
+      <a
+        href="https://wa.me/919730575099"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center gap-2 px-3 py-2 rounded-full bg-[#1c1b19]/80 backdrop-blur-md border border-[#c4a277]/30 text-[#c4a277] hover:bg-[#c4a277] hover:text-[#1c1b19] transition-all duration-300 shadow-xl"
+        title="Chat on WhatsApp"
+      >
+        <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+        <span className="text-xs font-mono uppercase tracking-widest font-bold">+91 9730575099</span>
+      </a>
+
       <button
         onClick={toggleListening}
         className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 shadow-xl border ${

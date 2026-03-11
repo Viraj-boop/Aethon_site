@@ -27,6 +27,7 @@ class ErrorBoundary extends Component<{children: ReactNode, fallback: ReactNode}
 
 function Earth() {
   const group = useRef<THREE.Group>(null);
+  const earthRef = useRef<THREE.Mesh>(null);
   const cloudsRef = useRef<THREE.Mesh>(null);
   
   useFrame(() => {
@@ -53,12 +54,13 @@ function Earth() {
   const markers = [
     { name: 'USA', pos: getPos(37.0902, -95.7129, 2.05) },
     { name: 'Dubai', pos: getPos(25.2048, 55.2708, 2.05) },
-    { name: 'India', pos: getPos(20.5937, 78.9629, 2.05) },
+    { name: 'India', pos: getPos(10.5937, 78.9629, 2.05) }, // Moved south a bit
+    { name: 'London', pos: getPos(51.5074, -0.1278, 2.05) }, // Added another location to balance
   ];
 
   return (
     <group ref={group} rotation={[0.2, 0, 0]}>
-      <Sphere args={[2, 64, 64]}>
+      <Sphere ref={earthRef} args={[2, 64, 64]}>
         <meshPhongMaterial 
           map={colorMap}
           normalMap={normalMap}
@@ -80,8 +82,8 @@ function Earth() {
         <mesh key={i} position={m.pos}>
           <sphereGeometry args={[0.04, 16, 16]} />
           <meshBasicMaterial color="#c4a277" />
-          <Html distanceFactor={15}>
-            <div className="text-[#c4a277] text-xs font-mono bg-[#1c1b19]/80 px-2 py-1 rounded whitespace-nowrap border border-[#c4a277]/30 backdrop-blur-sm cursor-pointer hover:bg-[#c4a277] hover:text-[#1c1b19] transition-colors">
+          <Html distanceFactor={15} occlude={[earthRef]}>
+            <div className={`text-[#c4a277] text-xs font-mono bg-[#1c1b19]/80 px-2 py-1 rounded whitespace-nowrap border border-[#c4a277]/30 backdrop-blur-sm cursor-pointer hover:bg-[#c4a277] hover:text-[#1c1b19] transition-colors`}>
               <div className="w-2 h-2 bg-current rounded-full inline-block mr-2 animate-pulse" />
               {m.name}
             </div>
@@ -99,7 +101,7 @@ export default function Globe() {
         <Canvas camera={{ position: [0, 0, 6], fov: 45 }}>
           <ambientLight intensity={0.2} color="#ffffff" />
           <directionalLight position={[5, 3, 5]} intensity={1.5} color="#ffffff" />
-          <React.Suspense fallback={null}>
+          <React.Suspense fallback={<Html center><div className="flex flex-col items-center gap-2"><div className="w-4 h-4 border-2 border-[#c4a277] border-t-transparent rounded-full animate-spin" /><span className="text-[#c4a277] text-[10px] font-mono tracking-widest uppercase">Loading 3D Engine...</span></div></Html>}>
             <Earth />
           </React.Suspense>
           <OrbitControls enableZoom={false} enablePan={false} rotateSpeed={0.5} autoRotate autoRotateSpeed={0.5} />
