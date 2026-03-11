@@ -20,6 +20,7 @@ import TechOrbit from './components/TechOrbit';
 import VoiceNav from './components/VoiceNav';
 import HackerMode from './components/HackerMode';
 import { useCursorStore } from './store';
+import founderImage from './assets/images/viraj.jpeg';
 
 // --- Utility Components ---
 
@@ -294,7 +295,7 @@ const Hero = () => {
 
 const About = () => {
   const team = [
-    { name: "Viraj", role: "Founder & Creative Director", img: "src/assets/images/viraj.jpeg" },
+    { name: "Viraj", role: "Founder & Creative Director", img: founderImage },
   ];
 
   const values = [
