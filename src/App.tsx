@@ -2,6 +2,7 @@
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
+import { Analytics } from "@vercel/analytics/react";
 import React, { useState, useEffect, useRef, ReactNode, useCallback } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence, useSpring } from 'motion/react';
 import { ArrowRight, ArrowDown, Sparkles } from 'lucide-react';
@@ -258,11 +259,11 @@ const Hero = () => {
         >
           <div className="relative group flex items-center gap-3 bg-black/20 backdrop-blur-md border border-white/10 rounded-full pl-4 pr-2 py-2 hover:bg-black/40 hover:border-white/30 transition-all focus-within:bg-black/60 focus-within:border-white/50 focus-within:shadow-[0_0_30px_rgba(255,255,255,0.1)]">
             <Sparkles className={`w-4 h-4 transition-colors duration-1000 ${theme.text}`} />
-            <input 
-              type="text" 
+            <input
+              type="text"
               value={businessName}
               onChange={(e) => setBusinessName(e.target.value)}
-              placeholder="Personalize demo..." 
+              placeholder="Personalize demo..."
               className="bg-transparent text-white placeholder:text-white/40 text-xs font-mono focus:outline-none w-32 focus:w-48 transition-all"
             />
           </div>
@@ -279,10 +280,10 @@ const Hero = () => {
           <motion.div
             className="w-7 h-11 border border-white/20 rounded-full flex justify-center pb-[12px] pt-[4px] pl-[8px] pr-[6px] -mb-[6px] mt-[1px]"
           >
-            <motion.div 
+            <motion.div
               animate={{ y: [0, 12, 0] }}
               transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              className={`w-1 h-1.5 rounded-full transition-colors duration-1000 ${theme.accent}`} 
+              className={`w-1 h-1.5 rounded-full transition-colors duration-1000 ${theme.accent}`}
             />
           </motion.div>
         </motion.div>
@@ -308,7 +309,7 @@ const About = () => {
         <h2 className="text-2xl md:text-5xl lg:text-6xl font-display leading-[1.3] tracking-tight max-w-6xl">
           <TextReveal text="We are a digital agency focused on creating bespoke, high-performance web experiences. We strip away the unnecessary to deliver clarity, impact, and measurable results." />
         </h2>
-        
+
         {/* History & Story */}
         <div className="mt-24 md:mt-40 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
           <div>
@@ -316,7 +317,7 @@ const About = () => {
               <span className="w-8 h-[1px] bg-gray-500" /> Our Story
             </h3>
             <h4 className="text-3xl md:text-5xl font-display font-bold uppercase tracking-tight mb-8">
-              Forged in<br/>Excellence
+              Forged in<br />Excellence
             </h4>
           </div>
           <div className="flex flex-col gap-6 text-base md:text-lg font-sans font-light text-gray-600 leading-relaxed">
@@ -358,9 +359,9 @@ const About = () => {
             {team.map((member, i) => (
               <StaggerItem key={i} className="group cursor-pointer w-full max-w-sm">
                 <div className="overflow-hidden rounded-2xl aspect-[3/4] mb-6 bg-gray-100 relative">
-                  <img 
-                    src={member.img} 
-                    alt={member.name} 
+                  <img
+                    src={member.img}
+                    alt={member.name}
                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
                   />
                 </div>
@@ -377,8 +378,8 @@ const About = () => {
 
 const Work = () => {
   const projects = [
-    { 
-      title: "Fortune Star Bakery", 
+    {
+      title: "Fortune Star Bakery",
       description: "E-commerce platform with 40% increase in online orders. Built with Next.js and Shopify.",
       image: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1600&auto=format&fit=crop",
       stats: {
@@ -387,8 +388,8 @@ const Work = () => {
         seo: "+150%"
       }
     },
-    { 
-      title: "Tatwa Interiors", 
+    {
+      title: "Tatwa Interiors",
       description: "Immersive portfolio site featuring 3D material boards and high-res galleries.",
       image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1600&auto=format&fit=crop",
       stats: {
@@ -397,8 +398,8 @@ const Work = () => {
         seo: "+85%"
       }
     },
-    { 
-      title: "South & Spices Dubai", 
+    {
+      title: "South & Spices Dubai",
       description: "Global restaurant chain landing page with localized menus and reservations.",
       image: "https://images.unsplash.com/photo-1550684376-efcbd6e3f031?q=80&w=1600&auto=format&fit=crop",
       stats: {
@@ -466,8 +467,8 @@ const Services = () => {
         </div>
         <div className="md:w-2/3 flex flex-col">
           {services.map((s, i) => (
-            <motion.div 
-              key={i} 
+            <motion.div
+              key={i}
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-10%" }}
@@ -482,7 +483,7 @@ const Services = () => {
           ))}
         </div>
       </div>
-      
+
       <div className="px-4 md:px-12 pb-24 md:pb-40 max-w-7xl mx-auto">
         <h3 className="text-xs md:text-sm font-sans text-gray-500 uppercase tracking-widest mb-12 flex items-center gap-2">
           <span className="w-8 h-[1px] bg-gray-500" /> Technology Stack
@@ -499,7 +500,7 @@ const Footer = () => {
     target: ref,
     offset: ["start end", "end end"]
   });
-  
+
   const scale = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
   const opacity = useTransform(scrollYProgress, [0, 1], [0.5, 1]);
 
@@ -510,9 +511,9 @@ const Footer = () => {
           <h2 className="text-xs md:text-sm font-sans text-gray-400 uppercase tracking-widest mb-4 flex items-center gap-2">
             <span className="w-8 h-[1px] bg-gray-400" /> Get in touch
           </h2>
-          <h3 className="text-4xl md:text-7xl font-display font-bold uppercase tracking-tight">Let's build<br/>something great.</h3>
+          <h3 className="text-4xl md:text-7xl font-display font-bold uppercase tracking-tight">Let's build<br />something great.</h3>
         </div>
-        
+
         <form className="flex flex-col gap-8 md:gap-12 text-left">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
             <div className="flex flex-col gap-2">
@@ -530,7 +531,7 @@ const Footer = () => {
           </div>
           <div className="flex justify-start mt-4">
             <button type="button" className="group flex items-center gap-4 text-xs md:text-sm font-sans font-bold uppercase tracking-widest text-white hover:text-gray-300 transition-colors">
-              Send Inquiry 
+              Send Inquiry
               <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-bg transition-all duration-500">
                 <ArrowRight className="w-4 h-4" />
               </div>
@@ -541,10 +542,10 @@ const Footer = () => {
 
       <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
         <h2 className="text-lg md:text-2xl font-sans font-light mb-8 md:mb-12 text-gray-400">Or email us directly</h2>
-        
+
         <Magnetic>
-          <motion.a 
-            href="mailto:aethon.co@gmail.com" 
+          <motion.a
+            href="mailto:aethon.co@gmail.com"
             className="relative group inline-block"
             style={{ scale, opacity }}
           >
@@ -575,51 +576,51 @@ export default function App() {
   const [hackerMode, setHackerMode] = useState(false);
   const theme = useCursorStore(state => state.theme);
 
-useEffect(() => {
-  if ('scrollRestoration' in history) {
-    history.scrollRestoration = 'manual';
-  }
-  const handleScroll = () => {
-    setScrolled(window.scrollY > 50);
-  };
-  window.addEventListener('scroll', handleScroll);
-  return () => window.removeEventListener('scroll', handleScroll);
-}, []);
-useEffect(() => {
-  if (loading) {
-    document.body.style.overflow = "hidden";
-  } else {
-    document.body.style.overflow = "auto";
-    window.scrollTo(0, 0);
-  }
+  useEffect(() => {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+  useEffect(() => {
+    if (loading) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+      window.scrollTo(0, 0);
+    }
 
-  return () => {
-    document.body.style.overflow = "auto";
-  };
-}, [loading]);
-useEffect(() => {
-  if (!loading) {
-    const timer = setTimeout(() => {
-      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-      document.documentElement.scrollTop = 0;
-      document.body.scrollTop = 0;
-    }, 50);
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [loading]);
+  useEffect(() => {
+    if (!loading) {
+      const timer = setTimeout(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      }, 50);
 
-    return () => clearTimeout(timer);
-  }
-}, [loading]);
+      return () => clearTimeout(timer);
+    }
+  }, [loading]);
 
   useEffect(() => {
     let keyBuffer: string[] = [];
     const handleKeyDown = (e: KeyboardEvent) => {
       // Ignore if typing in an input or textarea
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
-      
+
       keyBuffer.push(e.key.toLowerCase());
       if (keyBuffer.length > 3) {
         keyBuffer.shift();
       }
-      
+
       if (keyBuffer.join('') === 'dev') {
         setHackerMode(true);
         keyBuffer = [];
@@ -643,7 +644,7 @@ useEffect(() => {
         <CustomCursor />
         <HUD />
         <VoiceNav />
-        
+        <Analytics />
         <AnimatePresence mode="wait">
           {loading && <Preloader onComplete={handlePreloaderComplete} />}
         </AnimatePresence>
