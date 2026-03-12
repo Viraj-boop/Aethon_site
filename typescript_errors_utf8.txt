@@ -1,0 +1,2 @@
+﻿src/App.tsx(23,26): error TS2307: Cannot find module './assets/images/viraj.jpeg' or its corresponding type declarations.
+src/App.tsx(24,28): error TS2307: Cannot find module './assets/images/founder.jpeg' or its corresponding type declarations.

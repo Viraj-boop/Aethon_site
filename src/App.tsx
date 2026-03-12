@@ -21,6 +21,7 @@ import VoiceNav from './components/VoiceNav';
 import HackerMode from './components/HackerMode';
 import { useCursorStore } from './store';
 import founderImage from './assets/images/viraj.jpeg';
+import coFounderImage from './assets/images/swarup.jpeg';
 
 // --- Utility Components ---
 
@@ -296,6 +297,7 @@ const Hero = () => {
 const About = () => {
   const team = [
     { name: "Viraj", role: "Founder & Creative Director", img: founderImage },
+    { name: "Swarup", role: "Co-founder & Marketing Manager", img: coFounderImage },
   ];
 
   const values = [
@@ -356,10 +358,10 @@ const About = () => {
           <h3 className="text-xs md:text-sm font-sans text-gray-500 uppercase tracking-widest mb-12 flex items-center gap-2">
             <span className="w-8 h-[1px] bg-gray-500" /> Leadership
           </h3>
-          <StaggerContainer className="flex justify-center">
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 justify-center place-items-center max-w-4xl mx-auto">
             {team.map((member, i) => (
               <StaggerItem key={i} className="group cursor-pointer w-full max-w-sm">
-                <div className="overflow-hidden rounded-2xl aspect-[3/4] mb-6 bg-gray-100 relative">
+                <div className="overflow-hidden rounded-2xl aspect-[3/4] mb-6 bg-gray-100 relative shadow-lg">
                   <img
                     src={member.img}
                     alt={member.name}
