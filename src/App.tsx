@@ -810,6 +810,7 @@ ${formData.project}`);
 };
 
 import ExitIntentPopup from './components/ExitIntentPopup';
+import InstantGenerator from './components/InstantGenerator';
 
 // --- Main App ---
 
@@ -911,11 +912,11 @@ export default function App() {
               <About />
               <Testimonials />
               <Work />
+              <InstantGenerator />
               <Process />
               <Services />
               <Terminal />
               <LeadMagnet theme={theme} />
-              <Footer />
             </motion.main>
           </PageTransition>
         )}
