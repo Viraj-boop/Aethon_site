@@ -22,6 +22,8 @@ import HackerMode from './components/HackerMode';
 import { useCursorStore } from './store';
 import founderImage from './assets/images/viraj.jpeg';
 import coFounderImage from './assets/images/swarup.jpeg';
+import { User, Star } from 'lucide-react';
+
 
 // --- Utility Components ---
 
@@ -244,11 +246,20 @@ const Hero = () => {
           className="mt-6 md:mt-10 flex flex-col items-center gap-8 z-10 relative w-full max-w-2xl"
         >
           <p className={`text-lg md:text-3xl font-display font-normal ${theme.text} max-w-2xl px-4 leading-relaxed transition-colors duration-1000 drop-shadow-2xl`} style={{ textShadow: '0 4px 30px rgba(0,0,0,0.8)' }}>
-            {theme.headline}
+            We build premium, high-performance websites that multiply your revenue.
           </p>
-          <div className="flex items-center gap-3 text-[10px] md:text-xs font-sans font-bold uppercase tracking-widest mt-2 bg-black/50 backdrop-blur-md px-6 py-3 rounded-full border border-white/10">
-            <div className={`w-1.5 h-1.5 rounded-full transition-colors duration-1000 ${theme.accent}`} />
-            <span className="transition-colors duration-1000 text-white/80">{theme.subheadline}</span>
+          <div className="flex flex-col md:flex-row items-center gap-4 mt-4">
+            <button 
+              onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
+              className="group flex items-center gap-3 bg-[#c4a277] text-[#1c1b19] px-6 py-3 rounded-full font-sans font-bold uppercase tracking-widest text-xs md:text-sm hover:bg-white transition-colors duration-300 shadow-[0_0_30px_rgba(196,162,119,0.3)]"
+            >
+              Start Your Project
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
+            <div className="flex items-center gap-3 text-[10px] md:text-xs font-sans font-bold uppercase tracking-widest bg-black/50 backdrop-blur-md px-6 py-3 rounded-full border border-white/10">
+              <div className={`w-1.5 h-1.5 rounded-full transition-colors duration-1000 ${theme.accent}`} />
+              <span className="transition-colors duration-1000 text-white/80">{theme.subheadline}</span>
+            </div>
           </div>
         </motion.div>
 
@@ -294,6 +305,31 @@ const Hero = () => {
   );
 };
 
+const LogoTicker = () => {
+  const logos = [
+    "FORTUNE STAR", "TATWA INTERIORS", "SOUTH & SPICES", "LUMINA TECH", "VORTEX MEDIA", "NEXUS GROUP"
+  ];
+
+  return (
+    <div className="w-full bg-[#1c1b19] border-t border-b border-white/10 py-6 md:py-8 overflow-hidden z-20 relative -mt-10 rounded-t-[2rem] md:rounded-t-[4rem]">
+      <div className="absolute inset-0 bg-noise opacity-20 pointer-events-none mix-blend-overlay"></div>
+      <div className="flex whitespace-nowrap overflow-hidden">
+        <motion.div
+          animate={{ x: [0, -1000] }}
+          transition={{ repeat: Infinity, duration: 25, ease: "linear" }}
+          className="flex items-center gap-16 md:gap-32 px-8"
+        >
+          {[...logos, ...logos, ...logos].map((logo, index) => (
+            <span key={index} className="text-sm md:text-xl font-display font-bold text-gray-500 uppercase tracking-widest opacity-50 hover:opacity-100 transition-opacity">
+              {logo}
+            </span>
+          ))}
+        </motion.div>
+      </div>
+    </div>
+  );
+};
+
 const About = () => {
   const team = [
     { name: "Viraj", role: "Founder & Creative Director", img: founderImage },
@@ -307,7 +343,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="relative z-10 bg-white text-bg py-24 md:py-48 px-4 md:px-12 rounded-t-[2rem] md:rounded-t-[4rem] -mt-12 shadow-2xl">
+    <section id="about" className="relative z-10 bg-white text-bg py-24 md:py-48 px-4 md:px-12 -mt-4 shadow-2xl">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-2xl md:text-5xl lg:text-6xl font-display leading-[1.3] tracking-tight max-w-6xl">
           <TextReveal text="We are a digital agency focused on creating bespoke, high-performance web experiences. We strip away the unnecessary to deliver clarity, impact, and measurable results." />
@@ -379,6 +415,70 @@ const About = () => {
   );
 };
 
+const Testimonials = () => {
+  const testimonials = [
+    {
+      quote: "Aethon completely transformed our online presence. Within 3 months of launching our new e-commerce platform, our online sales doubled. Their attention to detail and focus on performance is unmatched.",
+      name: "Sarah Jenkins",
+      role: "CEO, Fortune Star Bakery",
+      rating: 5
+    },
+    {
+      quote: "The team at Aethon didn't just build a website; they built a digital experience that perfectly captures our brand essence. The 3D integration they delivered is constantly praised by our clients.",
+      name: "Marcus Thorne",
+      role: "Founder, Tatwa Interiors",
+      rating: 5
+    }
+  ];
+
+  return (
+    <section className="bg-bg text-text py-24 md:py-32 px-4 md:px-12 relative z-10 overflow-hidden rounded-t-[2rem] md:rounded-t-[4rem] -mt-12 shadow-[0_-20px_50px_rgba(0,0,0,0.3)] border-t border-white/5">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
+          <div>
+            <h2 className="text-xs md:text-sm font-sans text-[#c4a277] uppercase tracking-widest mb-4 flex items-center gap-2">
+              <span className="w-8 h-[1px] bg-[#c4a277]" /> Client Success
+            </h2>
+            <h3 className="text-3xl md:text-6xl font-display font-bold uppercase tracking-tight">Don't just take<br/>our word for it.</h3>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+          {testimonials.map((t, i) => (
+             <motion.div
+             key={i}
+             initial={{ opacity: 0, y: 30 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: true, margin: "-10%" }}
+             transition={{ duration: 0.8, delay: i * 0.2, ease: [0.16, 1, 0.3, 1] }}
+             className="bg-[#1c1b19] border border-white/10 p-8 md:p-12 rounded-2xl relative group hover:border-[#c4a277]/50 transition-colors duration-500"
+           >
+             <div className="absolute top-8 right-8 text-[#c4a277]/20 group-hover:text-[#c4a277]/40 transition-colors">
+               <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                 <path d="M14.017 21L16.411 14.596C17.394 11.956 18.57 9.8 20.3 7.8L18.47 6.1C16.34 8.6 15.01 11.2 14.017 14.596M6.017 21L8.411 14.596C9.394 11.956 10.57 9.8 12.3 7.8L10.47 6.1C8.34 8.6 7.01 11.2 6.017 14.596Z" />
+               </svg>
+             </div>
+             <div className="flex gap-1 mb-6 text-[#c4a277]">
+               {[...Array(t.rating)].map((_, i) => <Star key={i} className="w-4 h-4 fill-current" />)}
+             </div>
+             <p className="text-lg md:text-xl font-sans font-light text-gray-300 mb-8 italic leading-relaxed relative z-10">"{t.quote}"</p>
+             <div className="flex items-center gap-4 border-t border-white/10 pt-6">
+               <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
+                 <User className="w-6 h-6 text-gray-400" />
+               </div>
+               <div>
+                 <h4 className="font-display font-bold text-white uppercase tracking-wider">{t.name}</h4>
+                 <p className="text-xs font-sans text-gray-500 uppercase tracking-widest">{t.role}</p>
+               </div>
+             </div>
+           </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const Work = () => {
   const projects = [
     {
@@ -389,6 +489,11 @@ const Work = () => {
         conversion: "+42%",
         lighthouse: "98/100",
         seo: "+150%"
+      },
+      caseStudy: {
+        problem: "The previous site was slow, not mobile-optimized, and lacked a clear path to purchase, resulting in a high bounce rate.",
+        solution: "We engineered a headless e-commerce solution using Next.js and Shopify, focusing on bleeding-edge performance and a frictionless checkout flow.",
+        results: "Online orders increased by 42% within the first month. The site now loads in under 1 second globally."
       }
     },
     {
@@ -399,6 +504,11 @@ const Work = () => {
         conversion: "+28%",
         lighthouse: "95/100",
         seo: "+85%"
+      },
+      caseStudy: {
+        problem: "Tatwa's high-end designs were getting lost in a generic, template-based portfolio that failed to convey their premium brand identity.",
+        solution: "We designed an award-winning digital experience featuring webGL-powered 3D material boards and smooth, cinematic page transitions.",
+        results: "Lead generation increased by 28%, and the site won multiple industry awards for its innovative design."
       }
     },
     {
@@ -409,6 +519,11 @@ const Work = () => {
         conversion: "+65%",
         lighthouse: "100/100",
         seo: "+210%"
+      },
+      caseStudy: {
+        problem: "The restaurant needed to streamline reservations and showcase their localized menus to a diverse, international audience in Dubai.",
+        solution: "We built a lightning-fast, highly-optimized landing page with an integrated booking system and dynamic, location-specific content.",
+        results: "Reservations through the web platform surged by 65%, and organic traffic grew by over 200% due to comprehensive international SEO."
       }
     },
   ];
@@ -449,6 +564,45 @@ const Marquee = () => (
     </motion.div>
   </div>
 );
+
+const Process = () => {
+  const steps = [
+    { num: "01", title: "Discovery", desc: "Understanding your brand, audience, and business goals." },
+    { num: "02", title: "Strategy", desc: "Crafting a blueprint for performance and conversion." },
+    { num: "03", title: "Development", desc: "Building scalable, high-speed digital architectures." },
+    { num: "04", title: "Growth", desc: "Continuous optimization to multiply your revenue." }
+  ];
+
+  return (
+    <section className="bg-white text-bg relative z-10 py-24 md:py-32 px-4 md:px-12 -mt-4 shadow-xl">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-12 md:gap-24">
+        <div className="md:w-1/3">
+           <h2 className="text-xs md:text-sm font-sans text-gray-500 uppercase tracking-widest md:sticky md:top-40 flex items-center gap-2">
+            <span className="w-8 h-[1px] bg-gray-500" /> How We Work
+          </h2>
+          <h3 className="text-3xl md:text-5xl font-display font-bold uppercase tracking-tight mt-6">A framework<br/>for scale.</h3>
+        </div>
+        
+        <div className="md:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
+          {steps.map((step, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-10%" }}
+              transition={{ duration: 0.6, delay: i * 0.15 }}
+              className="flex flex-col gap-4 border-t border-black/10 pt-6 group"
+            >
+              <span className="text-xl font-mono text-gray-300 group-hover:text-[#c4a277] transition-colors">{step.num}</span>
+              <h4 className="text-2xl font-display font-bold uppercase tracking-tight group-hover:pl-2 transition-all">{step.title}</h4>
+              <p className="font-sans font-light text-gray-600 text-sm md:text-base group-hover:pl-2 transition-all">{step.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
 
 const Services = () => {
   const services = [
@@ -492,6 +646,51 @@ const Services = () => {
           <span className="w-8 h-[1px] bg-gray-500" /> Technology Stack
         </h3>
         <TechOrbit />
+      </div>
+    </section>
+  );
+};
+
+const LeadMagnet = ({ theme }: { theme: any }) => {
+  const [email, setEmail] = useState('');
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const message = encodeURIComponent(`Hello Aethon! I'd love to get a Free Performance & UX Audit for my website. My email is: ${email}`);
+    window.open(`https://wa.me/919730575099?text=${message}`, '_blank');
+  };
+
+  return (
+    <section className="bg-bg text-text relative z-10 py-24 md:py-32 px-4 md:px-12 rounded-t-[2rem] md:rounded-t-[4rem] -mt-12 shadow-[0_-20px_50px_rgba(0,0,0,0.3)] border-t border-white/5 overflow-hidden">
+      {/* Background Effect */}
+      <div className="absolute inset-0 bg-noise opacity-20 pointer-events-none mix-blend-overlay"></div>
+      <div className={`absolute top-0 right-0 w-1/2 h-full opacity-10 bg-gradient-to-l from-[${theme.accent}] to-transparent pointer-events-none blur-3xl`} />
+      
+      <div className="max-w-4xl mx-auto flex flex-col items-center text-center relative z-10">
+        <h2 className="text-xs md:text-sm font-sans text-[#c4a277] uppercase tracking-widest mb-6 flex items-center gap-2 justify-center">
+          <span className="w-8 h-[1px] bg-[#c4a277]" /> Limited Time Offer <span className="w-8 h-[1px] bg-[#c4a277]" />
+        </h2>
+        <h3 className="text-3xl md:text-5xl lg:text-7xl font-display font-bold uppercase tracking-tight mb-6">
+          Get a Free Performance <br/>& UX Audit.
+        </h3>
+        <p className="text-sm md:text-lg font-sans font-light text-gray-400 mb-12 max-w-2xl leading-relaxed">
+          Wondering why your current site isn't converting? Enter your email below, and our experts will tear down your website's performance, design, and SEO to uncover hidden revenue opportunities—at no cost to you.
+        </p>
+        
+        <form onSubmit={handleSubmit} className="w-full max-w-md flex flex-col gap-4">
+          <input 
+            type="email" 
+            placeholder="Enter your email address..." 
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full bg-[#1c1b19]/80 backdrop-blur-md border border-white/20 py-4 px-6 rounded-full text-base font-sans text-white placeholder:text-gray-600 focus:outline-none focus:border-[#c4a277] transition-colors shadow-lg" 
+          />
+          <button type="submit" className="w-full group flex items-center justify-center gap-4 bg-[#c4a277] text-[#1c1b19] py-4 px-6 rounded-full font-sans font-bold uppercase tracking-widest text-sm hover:bg-white transition-colors shadow-[0_0_30px_rgba(196,162,119,0.2)] mt-2">
+            Claim My Free Audit
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </button>
+        </form>
       </div>
     </section>
   );
@@ -702,10 +901,14 @@ export default function App() {
 
               <Hero />
               <Dashboard />
+              <LogoTicker />
               <About />
+              <Testimonials />
               <Work />
+              <Process />
               <Services />
               <Terminal />
+              <LeadMagnet theme={theme} />
               <Footer />
             </motion.main>
           </PageTransition>

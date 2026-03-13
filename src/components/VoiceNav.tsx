@@ -134,11 +134,12 @@ export default function VoiceNav() {
         href="https://wa.me/919730575099"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center gap-2 px-3 py-2 rounded-full bg-[#1c1b19]/80 backdrop-blur-md border border-[#c4a277]/30 text-[#c4a277] hover:bg-[#c4a277] hover:text-[#1c1b19] transition-all duration-300 shadow-xl"
+        className="group flex items-center gap-2 px-3 py-2 rounded-full bg-[#1c1b19]/80 backdrop-blur-md border border-[#c4a277]/30 text-[#c4a277] hover:bg-[#c4a277] hover:text-[#1c1b19] transition-all duration-300 shadow-xl overflow-hidden"
         title="Chat on WhatsApp"
       >
-        <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-        <span className="text-xs font-mono uppercase tracking-widest font-bold">+91 9730575099</span>
+        <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse flex-shrink-0" />
+        <span className="text-xs font-mono uppercase tracking-widest font-bold max-w-0 md:max-w-none md:w-auto overflow-hidden group-hover:max-w-[150px] transition-[max-width] duration-500 ease-in-out whitespace-nowrap hidden md:inline-block">Chat with Us</span>
+        <span className="text-xs font-mono uppercase tracking-widest font-bold md:hidden">Chat</span>
       </a>
 
       <button
