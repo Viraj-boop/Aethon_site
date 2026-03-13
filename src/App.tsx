@@ -507,6 +507,20 @@ const Footer = () => {
   const scale = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
   const opacity = useTransform(scrollYProgress, [0, 1], [0.5, 1]);
 
+  const [formData, setFormData] = useState({ name: '', email: '', project: '' });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const message = encodeURIComponent(`Hello Aethon!
+
+My name is ${formData.name}.
+My email is ${formData.email}.
+
+Project details:
+${formData.project}`);
+    window.open(`https://wa.me/919730575099?text=${message}`, '_blank');
+  };
+
   return (
     <footer ref={ref} className="relative bg-bg text-text pt-24 pb-32 md:pt-40 md:pb-48 px-4 md:px-12 overflow-hidden z-20 rounded-t-[2rem] md:rounded-t-[4rem] -mt-12 shadow-[0_-20px_50px_rgba(0,0,0,0.3)]">
       <div className="max-w-4xl mx-auto mb-32 md:mb-48">
@@ -517,23 +531,44 @@ const Footer = () => {
           <h3 className="text-4xl md:text-7xl font-display font-bold uppercase tracking-tight">Let's build<br />something great.</h3>
         </div>
 
-        <form className="flex flex-col gap-8 md:gap-12 text-left">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-8 md:gap-12 text-left">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
             <div className="flex flex-col gap-2">
               <label className="text-[10px] font-sans text-gray-500 uppercase tracking-widest">01. What's your name?</label>
-              <input type="text" placeholder="John Doe *" className="w-full bg-transparent border-b border-white/20 py-2 text-base md:text-lg font-sans text-white placeholder:text-gray-700 focus:outline-none focus:border-white transition-colors rounded-none" />
+              <input 
+                type="text" 
+                placeholder="John Doe *" 
+                required
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                className="w-full bg-transparent border-b border-white/20 py-2 text-base md:text-lg font-sans text-white placeholder:text-gray-700 focus:outline-none focus:border-white transition-colors rounded-none" 
+              />
             </div>
             <div className="flex flex-col gap-2">
               <label className="text-[10px] font-sans text-gray-500 uppercase tracking-widest">02. What's your email?</label>
-              <input type="email" placeholder="john@example.com *" className="w-full bg-transparent border-b border-white/20 py-2 text-base md:text-lg font-sans text-white placeholder:text-gray-700 focus:outline-none focus:border-white transition-colors rounded-none" />
+              <input 
+                type="email" 
+                placeholder="john@example.com *" 
+                required
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                className="w-full bg-transparent border-b border-white/20 py-2 text-base md:text-lg font-sans text-white placeholder:text-gray-700 focus:outline-none focus:border-white transition-colors rounded-none" 
+              />
             </div>
           </div>
           <div className="flex flex-col gap-2">
             <label className="text-[10px] font-sans text-gray-500 uppercase tracking-widest">03. Tell us about your project</label>
-            <textarea placeholder="Hello Aethon, I would like to..." rows={3} className="w-full bg-transparent border-b border-white/20 py-2 text-base md:text-lg font-sans text-white placeholder:text-gray-700 focus:outline-none focus:border-white transition-colors resize-none rounded-none"></textarea>
+            <textarea 
+              placeholder="Hello Aethon, I would like to..." 
+              rows={3} 
+              required
+              value={formData.project}
+              onChange={(e) => setFormData({ ...formData, project: e.target.value })}
+              className="w-full bg-transparent border-b border-white/20 py-2 text-base md:text-lg font-sans text-white placeholder:text-gray-700 focus:outline-none focus:border-white transition-colors resize-none rounded-none"
+            ></textarea>
           </div>
           <div className="flex justify-start mt-4">
-            <button type="button" className="group flex items-center gap-4 text-xs md:text-sm font-sans font-bold uppercase tracking-widest text-white hover:text-gray-300 transition-colors">
+            <button type="submit" className="group flex items-center gap-4 text-xs md:text-sm font-sans font-bold uppercase tracking-widest text-white hover:text-gray-300 transition-colors">
               Send Inquiry
               <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-bg transition-all duration-500">
                 <ArrowRight className="w-4 h-4" />
