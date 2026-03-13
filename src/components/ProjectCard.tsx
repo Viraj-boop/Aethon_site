@@ -27,8 +27,7 @@ export default function ProjectCard({ title, description, image, stats, caseStud
             </div>
 
             {/* Back (Business Impact Dashboard) */}
-            <div className="absolute inset-0 w-full h-full backface-hidden rounded-xl border border-[#c4a277]/30 bg-[#1c1b19]/90 backdrop-blur-xl shadow-2xl flex flex-col p-6 md:p-12 rotate-y-180 overflow-hidden">
-              <div className="absolute inset-0 bg-noise opacity-20 pointer-events-none" />
+            <div className="absolute inset-0 w-full h-full backface-hidden rounded-xl border border-[#c4a277]/30 bg-[#1c1b19]/90 backdrop-blur-xl shadow-2xl flex flex-col p-6 md:p-12 rotate-y-180 overflow-y-auto md:overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-[#c4a277]/5 to-transparent pointer-events-none" />
               
               <div className="mb-6 md:mb-12 relative z-10">

@@ -312,7 +312,6 @@ const LogoTicker = () => {
 
   return (
     <div className="w-full bg-[#1c1b19] border-t border-b border-white/10 py-6 md:py-8 overflow-hidden z-20 relative -mt-10 rounded-t-[2rem] md:rounded-t-[4rem]">
-      <div className="absolute inset-0 bg-noise opacity-20 pointer-events-none mix-blend-overlay"></div>
       <div className="flex whitespace-nowrap overflow-hidden">
         <motion.div
           animate={{ x: [0, -1000] }}
@@ -663,7 +662,6 @@ const LeadMagnet = ({ theme }: { theme: any }) => {
   return (
     <section className="bg-bg text-text relative z-10 py-24 md:py-32 px-4 md:px-12 rounded-t-[2rem] md:rounded-t-[4rem] -mt-12 shadow-[0_-20px_50px_rgba(0,0,0,0.3)] border-t border-white/5 overflow-hidden">
       {/* Background Effect */}
-      <div className="absolute inset-0 bg-noise opacity-20 pointer-events-none mix-blend-overlay"></div>
       <div className={`absolute top-0 right-0 w-1/2 h-full opacity-10 bg-gradient-to-l from-[${theme.accent}] to-transparent pointer-events-none blur-3xl`} />
       
       <div className="max-w-4xl mx-auto flex flex-col items-center text-center relative z-10">
@@ -877,7 +875,6 @@ export default function App() {
     <div className={theme === 'matrix' ? 'theme-matrix' : theme === 'blueprint' ? 'theme-blueprint' : ''}>
       {hackerMode && <HackerMode onClose={() => setHackerMode(false)} />}
       <SmoothScroll>
-        <div className="bg-noise" />
         <CustomCursor />
         <HUD />
         <VoiceNav />
