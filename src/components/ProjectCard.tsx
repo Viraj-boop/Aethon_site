@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ArrowUpRight, TrendingUp, Smartphone, Search, X } from 'lucide-react';
+import BeforeAfterSlider from './BeforeAfterSlider';
 
 export default function ProjectCard({ title, description, image, stats, caseStudy }: any) {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -100,11 +101,11 @@ export default function ProjectCard({ title, description, image, stats, caseStud
                animate={{ opacity: 1, y: 0, scale: 1 }}
                exit={{ opacity: 0, y: 50, scale: 0.95 }}
                transition={{ type: "spring", damping: 25, stiffness: 300 }}
-               className="relative bg-[#1c1b19] border border-[#c4a277]/30 rounded-2xl p-8 md:p-12 max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl z-10"
+               className="relative bg-[#1c1b19] border border-[#c4a277]/30 rounded-2xl p-8 md:p-12 max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl z-10"
             >
               <button 
                 onClick={() => setShowModal(false)}
-                className="absolute top-6 right-6 text-gray-500 hover:text-white transition-colors"
+                className="absolute top-6 right-6 text-gray-500 hover:text-white transition-colors z-20"
               >
                 <X className="w-6 h-6" />
               </button>
@@ -112,9 +113,19 @@ export default function ProjectCard({ title, description, image, stats, caseStud
               <h3 className="text-[10px] md:text-xs font-sans text-[#c4a277] uppercase tracking-widest mb-4 flex items-center gap-2">
                 <span className="w-8 h-[1px] bg-[#c4a277]" /> Case Study
               </h3>
-              <h2 className="text-3xl md:text-5xl font-display font-bold uppercase tracking-tight text-white mb-12">
+              <h2 className="text-3xl md:text-5xl font-display font-bold uppercase tracking-tight text-white mb-8">
                 {title}
               </h2>
+              
+              {caseStudy.beforeImage && caseStudy.afterImage && (
+                <div className="mb-12">
+                  <h4 className="text-sm font-sans text-gray-400 uppercase tracking-widest mb-4">The Transformation</h4>
+                  <BeforeAfterSlider 
+                    beforeImage={caseStudy.beforeImage} 
+                    afterImage={caseStudy.afterImage} 
+                  />
+                </div>
+              )}
               
               <div className="flex flex-col gap-10">
                 <div className="border-l-2 border-red-500/50 pl-6">

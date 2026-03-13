@@ -492,7 +492,9 @@ const Work = () => {
       caseStudy: {
         problem: "The previous site was slow, not mobile-optimized, and lacked a clear path to purchase, resulting in a high bounce rate.",
         solution: "We engineered a headless e-commerce solution using Next.js and Shopify, focusing on bleeding-edge performance and a frictionless checkout flow.",
-        results: "Online orders increased by 42% within the first month. The site now loads in under 1 second globally."
+        results: "Online orders increased by 42% within the first month. The site now loads in under 1 second globally.",
+        beforeImage: "https://images.unsplash.com/photo-1481437156560-3205f6a55735?q=80&w=1600&auto=format&fit=crop", // Blank/messy store concept
+        afterImage: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1600&auto=format&fit=crop" // Sleek store
       }
     },
     {
@@ -507,7 +509,9 @@ const Work = () => {
       caseStudy: {
         problem: "Tatwa's high-end designs were getting lost in a generic, template-based portfolio that failed to convey their premium brand identity.",
         solution: "We designed an award-winning digital experience featuring webGL-powered 3D material boards and smooth, cinematic page transitions.",
-        results: "Lead generation increased by 28%, and the site won multiple industry awards for its innovative design."
+        results: "Lead generation increased by 28%, and the site won multiple industry awards for its innovative design.",
+        beforeImage: "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=1600&auto=format&fit=crop", // Generic room
+        afterImage: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1600&auto=format&fit=crop" // Premium room
       }
     },
     {
@@ -522,7 +526,9 @@ const Work = () => {
       caseStudy: {
         problem: "The restaurant needed to streamline reservations and showcase their localized menus to a diverse, international audience in Dubai.",
         solution: "We built a lightning-fast, highly-optimized landing page with an integrated booking system and dynamic, location-specific content.",
-        results: "Reservations through the web platform surged by 65%, and organic traffic grew by over 200% due to comprehensive international SEO."
+        results: "Reservations through the web platform surged by 65%, and organic traffic grew by over 200% due to comprehensive international SEO.",
+        beforeImage: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1600&auto=format&fit=crop", // Basic restaurant
+        afterImage: "https://images.unsplash.com/photo-1550684376-efcbd6e3f031?q=80&w=1600&auto=format&fit=crop" // Premium plating
       }
     },
   ];
@@ -803,6 +809,8 @@ ${formData.project}`);
   );
 };
 
+import ExitIntentPopup from './components/ExitIntentPopup';
+
 // --- Main App ---
 
 export default function App() {
@@ -873,6 +881,7 @@ export default function App() {
 
   return (
     <div className={theme === 'matrix' ? 'theme-matrix' : theme === 'blueprint' ? 'theme-blueprint' : ''}>
+      <ExitIntentPopup />
       {hackerMode && <HackerMode onClose={() => setHackerMode(false)} />}
       <SmoothScroll>
         <CustomCursor />
